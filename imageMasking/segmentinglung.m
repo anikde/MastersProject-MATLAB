@@ -1,4 +1,4 @@
-clear all
+clear
 lung = imread("Covid19Pos-LungCT_2.png");
 gray =rgb2gray(lung);
 figure(1)

@@ -1,5 +1,5 @@
 %%Pre-processing 
-
+clear
 image = imread("Covid19Pos-LungCT.png");
 figure(1)
 subplot(131);
@@ -50,7 +50,7 @@ subplot(222)
 imagesc(binary_without_objects);
 
 %filling regions and holes
-filing_holes = imfill(binary_without_objects, 'holes');
+filing_holes = imfill(binary_without_objects, "holes");
 subplot(223)
 imagesc(filing_holes);
 
@@ -62,5 +62,12 @@ imagesc(subtracted)
 
 figure(4), clf
 imagesc(subtracted);
+
+figure(5), clf
+more_filling = bwareaopen(subtracted, 100);
+more = imfill(more_filling, "holes");
+more2 = imfill(more, "holes");
+% more = bwareaopen(more_filling, 50);
+imagesc(more2);
 
 
