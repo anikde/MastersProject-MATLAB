@@ -14,16 +14,17 @@ binary = imbinarize(channelone);
 subplot(133)
 imagesc(binary);
 title("binary");
-figure(2)
 
+figure(2)
 subplot(121);
 imhist(image);
 title("histogram plot of original image");
+
 subplot(122);
 imhist(binary);
 title("histogram plot of binary image");
 
-image_mean = mean2(channelone)
+image_mean = mean2(channelone);
 imagesize = size(image);
 sizeX = imagesize(1);
 sizeY = imagesize(2);
@@ -48,20 +49,20 @@ imagesc(newpicture);
 binary_without_objects = bwareaopen(newpicture, 50);
 subplot(222)
 imagesc(binary_without_objects);
+title("After removing small objects from binary image(2)");
 
 %filling regions and holes
 filing_holes = imfill(binary_without_objects, "holes");
 subplot(223)
 imagesc(filing_holes);
+title("filling regions and holes(3)");
 
 %subtracting images
 subtracted = imsubtract(binary_without_objects, filing_holes);
 subplot(224)
 imagesc(subtracted)
+title("After subtracting image 3 from 2 - image(4)");
 
-
-figure(4), clf
-imagesc(subtracted);
 
 figure(5), clf
 more_filling = bwareaopen(subtracted, 100);
@@ -69,5 +70,6 @@ more = imfill(more_filling, "holes");
 more2 = imfill(more, "holes");
 % more = bwareaopen(more_filling, 50);
 imagesc(more2);
+title("Did two times hole filling on the image(4) but still couldn't get a perfect mask")
 
 

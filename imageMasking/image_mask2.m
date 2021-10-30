@@ -1,5 +1,6 @@
 %% Image Pre-Processing as per the Q-Deformed Entropy paper
 
+
 image = imread("Covid19Pos-LungCT.png");
 figure(1),clf
 subplot(221);
